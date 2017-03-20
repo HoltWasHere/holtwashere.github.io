@@ -1,127 +1,164 @@
-# Holt Skinner
-## Computer Science Scholar
+# Dev Portfolio Template
 
-> [hastg2@mail.missouri.edu](hastg2@mail.missouri.edu)
+This repo contains an easy-to-customize personal tech portfolio template that is based off Sass and JavaScript. It is lightweight and fully responsive, as well as comes with the Bootstrap grid system and loaded with Font Awesome. The site is static and comes production ready if you just want to add your information and go. Alternatively, you can edit styles, colours, and scripts fairly easily. The site was built as modular as possible to make it easy to shift around styles and content.
 
-> (417) 855-0214
+To view a live demo, [click here](https://ryanfitzgerald.github.io/devportfolio-template/).
 
-> [GitHub](https://github.com/HoltWasHere)
-> &
-> [LinkedIn](https://linkedin.com/in/HoltWasHere)
-> HoltWasHere
+## Features
 
-------
+* Gulp ready (compiles Sass and minifies JS)
+* Sass ready with lots of commenting
+* Fully responsive
+* Comes with Bootstrap grid system
+* Easy colour changes can be done through simply variable edits
 
-### Education
+## Setup and Configuration
 
-University of Missouri - Columbia:
+To setup, simply fork the repo and run `npm install` in order to get all the Gulp dev dependencies. Next, run `Gulp watch` to compile the Sass and minify the JavaScript. Any changes done to the JavaScript (js/scripts.js) or Sass (sass/styles.scss) will be autocompiled and ready to go.
 
-__Computer Science,__ Bachelor of Science
+All scripts are within `js/scripts.js` and get minified to `js/scripts.min.js`.All styles are in `sass/styles.scss` and get compiled to `css/styles.css`. Both the minified scripts file and compiled CSS file are what is loaded on the page by default.
 
-*Minors: Math, Information Technology*
+At this point, the page is ready to go and you can begin to add your own information and make any needed changes. The next section contains a quick breakdown of each of the default sections and how they work.
 
-__GPA 3.979__
+## Customization and Editing
 
-__Expected Graduation: May 2018__
+### General
 
-__Coursework:__
-  * Advanced Algorithm Design and Programming
-  * Software Engineering
-  * Database Applications and Info Systems
-  * Science and Engineering of the Web
-  * Object-Oriented Programming
-  * Computer Networks
-  * Digital Logic
-  * Discrete Math
-  * Calculus 3
-  * Numerical Linear Algebra
-  * Mathematical Statistics
+In general, most styles on the page are based off the definitions of variables in the variable section of the style sheet:
 
-------
+```SCSS
+// Define base and accent colors
+$base-color: #3498db;
+$base-color-hover: darken($base-color, 10%);
 
-### Experience
+// Define background colors
+$background: #fff;
+$background-alt: #f2f2f5;
 
-**University of Missouri**
- Peer Assisted Study Session Tutor
+// Define border colors
+$border: #dcd9d9;
 
-  _Fall 2016 - Present_
+// Define text colors
+$heading: #374054;
+$text: #74808a;
+```
 
-  * Tutored undergraduate students in Mathematics and Computer Science courses.
+If you wish to change the general colour scheme of the page for example, simply change the value of `$base-color`.
 
-**Cerner Corporation**
-Software Engineering Intern
+There is also a number of default CSS classes that can be applied such as `.shadow`, `.shadow-large`, `.btn-rounded-white`, and various others. These can be found under the General Styles section in the stylesheet.
 
-  _Summer 2016 - Present_
-  * Implemented a front-end interface for displaying the current and previous NEDOCS scores of an emergency room.
-  * Utilized D3.js, jQuery, jQPlot, JavaScript, HTML and CSS.
-  * Currently in use by the University of Missouri Hospital.
+### Header Section
 
-**University of Missouri**
- Peer Advisor/Course Instructor
+The header section can be found within the `<header>` tag and simply contains an unordered list of anchors to different sections of the page. If you add a new section and want to be able to quickly navigate to it from the top, simply add another list element with an anchor that has the href of the ID of the section. Conversely, if you remove a section, don't forget to remove the associated navigation element.
 
-  _Fall 2015 - Present_
-  - Designed curriculum and taught two semesters of a freshman seminar course in Computer Science.
-  - Received “Excellence in Teaching” award for my work as an instructor.
+### Lead Section
 
-**University of Missouri**
- Lab Technician
+The Lead section is pretty straightforward, it contains an h1 for your name and an h2 for your title. It also contains a link that can be used to link to your resume should you wish to add it as well.
 
-  _Fall 2014 - Present_
-  - Provided technological support for lab computers and computer software.
+### About Section
 
-**Quality Computers, Inc.**
- IT Intern
+The about section contains a quick about blurb that can be edited by changing the text within the paragraph tags.
 
-  _Summer 2011_
-  - Built custom computers for sale.
-  - Performed IT consultations and service calls.
+### Experience Section
 
-------
+The experience section creates a vertical timeline with all your relevant experience. The code for the timeline creation can be found within `js/scripts.js` and is an adaptaion of [RyanFitzgerald/vertical-timeline](https://github.com/RyanFitzgerald/vertical-timeline).
 
-### Projects
+The default format is as follows:
 
-* **Hack Mizzou (2016):** Director of Logistics for annual hackathon at the University of Missouri hosted by the Association for Computing Machinery and Major League Hacking. Over 200 students competed.
+```HTML
+<div id="experience-timeline">
+    <div data-date="September 2015 – September 2016">
+        <h3>Employer Name</h3>
+        <h4>Job Title</h4>
+        <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex.
+       </p>
+    </div>
+</div>
+```
 
-* **Division of IT Inventory Management System (2016):** Designed and implemented an inventory management system for the Mizzou Division of IT. Allows checking in/out of items in inventory, administrator/employee access, and updating of inventory. Linux, Apache, MySQL, PHP, HTML, CSS, JavaScript, Bootstrap
+The data attribute `data-date` is what is used to add a date to the associated timeline point. All that is really required is a wrapping div (i.e. `#experience-timeline`) and nested divs to build the timeline. The h3, h4, and p tags are option and the contents of the div can be styled however you wish.
 
-* **Engineering Grand Challenge (2014):** Worked in a team to propose and design a theoretical solution for the NAE Challenge “Prevent Nuclear Terrorism.” Presented proposal to the department chairs and Dean of the College of Engineering.
+To add additional section, simply add additional nested divs under the main wrapping div.
 
--------
+### Education Section
 
-### Technical Skills
+The Education is just a series of `.education-block` classes with some details associated with them. By default, it shows school name, date, degree, and some additional details. For example:
 
-- C
-- JavaScript
-- HTML
-- CSS
-- PHP
-- SQL
-- Java
-- UNIX/Bash
-- Git/GitHub
-- jQuery
-- Materialize
-- Bootstrap
-- d3.js
+```HTML
+<div class="education-block">
+	<h3>University of Ottawa</h3>
+	<span class="education-date">Sept 2016 - Sept 2017</span>
+	<h4>Bachelor of Science in Computer Science</h4>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex.
+	</p>
+</div>
+```
 
--------
+To add additional section, simply add additional `.education-block` elements.
 
-### Awards & Honors
+### Projects Section
 
-* Dean’s High Honor Roll
-  : Achieved a 3.5-4.0 GPA for 4 Semesters
+The Project section contains a number of `.project` elements that represent each of your projects. By default, it contains a 300x300 image under `.project-image` and relevant project information under `.project-info`. An example is as follows:
 
-* Upsilon Pi Epsilon
-  : Fall 2016
+```HTML
+<div class="project">
+	<div class="project-image">
+		<img src="images/project.jpg" />
+	</div>
+	<!-- End .project-image -->
+	<div class="project-info">
+		<h3>Project Name Here</h3>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex.
+		</p>
+		<a href="#">View Project</a>
+	</div>
+	<!-- End .project-info -->
+</div>
+```
 
-* Association of Computing Machinery
-  : Director of Logistics, Hack Mizzou
+### Skills Section
 
-* Engineering Dean’s Scholars
+The Skills section is simply an unordered list that spits out a "Skill Cloud" with all the skills listed. To add / remove skills, simply edit or add list elements.
 
-* University Singers
-  : Technical Officer, Fall 2014 – Present
+```HTML
+<ul>
+	<li>JavaScript</li>
+	<li>Python</li>
+	<li>Ruby</li>
+	<li>Go</li>
+	<li>Node.js</li>
+</ul>
+```
 
-* Missouri Scholars 100
+### Contact Section
 
-* Missouri Scholars Academy
+Since the page is static, I opted to use the awesome Formspree to allow for a contact form without the need for anything else. To use it, you must have the page hosted on a server (loading a basic HTML page won't work) where a referrer header is generated. Also, simply add the email to the action. An example is as follows:
+
+```HTML
+<form method="POST" action="https://formspree.io/email@email.com">
+	<input type="hidden" name="_subject" value="Contact request from personal website" />
+	<input type="email" name="_replyto" placeholder="Your email" required>
+	<textarea name="message" placeholder="Your message" required></textarea>
+	<button type="submit">Send</button>
+</form>
+```
+For more information on configuration of the contact form or dealing with errors, check out [Formspree](https://formspree.io/).
+
+### Footer Section
+
+The Footer contains an optional copyright where you can place your name as well as an unordered list of all of your social or coding related profiles. By default it contains Github, Stack Overflow, Facebook, Twitter, and Google Plus. You can add or remove them easily and simply use the Font Awesome icon associated with the social profile you wish to use. For a list of all icons, [click here](http://fontawesome.io/icons/).
+
+## Changelog
+
+### 1.1
+
+* Fixed menu toggle on mobile devices
+* Fixed z-index / scrolling issue with mobile menu
+* Mobile menu now closes once a nav element is hit
+
+## License
+
+Completely free (MIT)! See LICENSE.md for more.
