@@ -200,10 +200,12 @@ footer {
 */
 #lead {
   position: relative;
-  background: url(../images/lead-bg.jpg);
+  background: url(../images/coffee.jpg);
   background-size: cover;
   padding: 250px 15px; }
-
+.lead-text {
+  text-shadow: .25rem .25rem .25rem  #333132;
+}
 #lead-content {
   position: relative;
   z-index: 10;
@@ -218,7 +220,7 @@ footer {
     letter-spacing: 0.05em;
     line-height: 0.9em; }
   #lead-content h2 {
-    color: #1fd7ff;
+    color: #fef8e2;
     font-weight: 500;
     font-size: 2.25em;
     margin-bottom: 15px; }
